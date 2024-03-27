@@ -1,72 +1,91 @@
-import { View, Text, Image, StatusBar, Button, TextInput, Keyboard, StyleSheet, TouchableWithoutFeedback, TouchableOpacity, ScrollView } from 'react-native'
-import React, { useRef } from 'react'
-import { Icon } from '@rneui/themed';
+import { View, Text, Image, StatusBar, StyleSheet, TouchableWithoutFeedback, ScrollView, DrawerLayoutAndroid } from 'react-native';
+import React, { useRef } from 'react';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Banner from '../../components/Banner';
+import genStyles, { BACKGROUND_COLOR, FOREGROUND_COLOR, MIDDLEGROUND_COLOR } from '../../styles/Styles';
+import IconStyles from '../../styles/Icons';
 
 export default function Home({ navigation }) {
+  const drawer = useRef<DrawerLayoutAndroid>(null);
 
   const switchScreen = () => {
     navigation.navigate('search');
   };
 
-  return (
-    <SafeAreaView style={{flex:1, backgroundColor:"#02092c"}}>
-      <StatusBar
-        animated={true}
-        backgroundColor="#02092c"
-        barStyle={'light-content'}
-        hidden={false}
-      />
-      <View style={[{flex: 0.15}, styles.container]}>
-        <Text style={{color:'#fff'}}>HEADER</Text>
-      </View>
+  const showDrawer = () => {
+    drawer.current?.openDrawer();
+    console.log("Drawer");
+  };
 
-      <View style={[{flex:1}, styles.container]}>
-          <Image resizeMode={'cover'} source={require('../../assets/imgs/logo.png')} style={{width:'110%', height:'80%'}}/>
-          <Text style={styles.titleLabel}>
-              SignoTech
+  const navigationView = () => (
+    <View style={genStyles.container}>
+      <Text style={{color:'#000'}}>I'm in the Drawer!</Text>
+    </View>
+  );
+
+  return (      
+      <SafeAreaView style={{flex:1, backgroundColor:BACKGROUND_COLOR}}>
+        <StatusBar
+          backgroundColor={MIDDLEGROUND_COLOR}
+          barStyle={'light-content'}
+          hidden={false}
+        />
+
+        <View style={[genStyles.container, genStyles.header, {flex: 0.15, justifyContent:'flex-start', flexDirection:'row'}]}>
+          <IonIcon name='menu' size={32} onPress={showDrawer} style={[IconStyles.icon, {color: FOREGROUND_COLOR}]}/>
+          <Text style={{marginLeft:10, fontSize:16, color:FOREGROUND_COLOR, fontFamily:'Arial'}}>
+            SignoTech
           </Text>
-          <Text style={{fontWeight:'bold', fontSize:13, color:'#00adef', fontFamily:'Roboto',}}>
-              A Sign Language Learning Application
-          </Text>
-      </View>
-        
-      <View style={{height:'8%'}}>
-        <TouchableWithoutFeedback onPress={switchScreen} activeOpacity={1}>
-          <View style={styles.searchButton}>
-            <Icon name='search' type='ionicons'/>
-            <Text>Type a word or phrase</Text>
-            <Icon name='mic' type='ionicons'/>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
-      
-      <View style={[{flex:1}, styles.container]}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{width: '100%'}}>
+        </View>
+
+        <View style={[genStyles.container, {flex:1, marginTop: 5}]}>
+            <Image resizeMode={'contain'} source={require('../../../assets/imgs/logo.png')} style={{height:'80%'}}/>
+            <Text style={[style.titleLabel]}>
+                SignoTech
+            </Text>
+            <Text style={{ fontSize:16, color:FOREGROUND_COLOR, fontFamily:'Arial Narrow Italic'}}>
+                Sign Language Learning Application
+            </Text>
+        </View>
           
-          <Banner/>
-          <Banner/>
-          <Banner/>
+        <View style={{height:'8%', marginTop: 28}}>
+          <TouchableWithoutFeedback onPress={switchScreen} activeOpacity={1}>
 
-        </ScrollView>
-      </View>
+            <View style={style.searchButton}>
+              <IonIcon name='search' style={[IconStyles.icon, {color:BACKGROUND_COLOR}]}/> 
+              <Text style={{color:'#000', fontFamily:'Arial'}}> 
+                  Type a word or phrase 
+              </Text>
+              <IonIcon name='mic' style={[IconStyles.icon, {color:BACKGROUND_COLOR}]} />
+            </View>
 
-      <View style={[{flex:0.15}, styles.container]}>
-        <Text style={{color:'#fff'}}>FOOTER</Text>
-      </View>
-    </SafeAreaView>
+          </TouchableWithoutFeedback>
+        </View>
+        
+        <View style={[{flex:1}, genStyles.container]}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{width: '100%'}}>
+            
+            <Banner/>
+            <Banner/>
+            <Banner/>
+
+          </ScrollView>
+        </View>
+
+        <View style={[{flex:0.15}, genStyles.container]}>
+          {/* <Text style={{color:'#fff'}}>FOOTER</Text> */}
+        </View>
+      </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   titleLabel: {
-    fontWeight:'bold', 
-    fontSize:50, 
-    color:'#00adef', 
-    marginBottom:15, 
-    fontFamily:'sans-serif',
+    fontSize:64, 
+    color:FOREGROUND_COLOR, 
+    fontFamily:'Arial Bold',
   },
 
   searchButton: {
@@ -82,11 +101,5 @@ const styles = StyleSheet.create({
     verticalAlign: 'middle',
     justifyContent:'space-around',
     backgroundColor:'#fff',
-  },
-
-  container: {
-    alignItems:'center', 
-    justifyContent:'center',
-    padding: 15,
   },
 })

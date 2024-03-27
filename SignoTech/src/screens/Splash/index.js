@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground } from 'react-native'
+import { View, Text, ImageBackground, StatusBar } from 'react-native'
 import React from 'react'
 
 export default function SplashScreen({ navigation }) {
@@ -8,7 +8,7 @@ export default function SplashScreen({ navigation }) {
 
   return (
     <ImageBackground 
-      source={require('../../assets/imgs/Splashscreen.png')}
+      source={require('../../../assets/imgs/Splashscreen.png')}
       resizeMode={'contain'} 
       style={{flex:1}}>
     </ImageBackground>
