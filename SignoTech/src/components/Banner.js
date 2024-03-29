@@ -6,8 +6,8 @@ export class Banner extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity activeOpacity={.8}>
-          <View style={styles.banners}>
+        <TouchableOpacity activeOpacity={.8} style={styles.banners}>
+          <View>
             <Text>
               Hello World
             </Text>
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     borderRadius:20,
     width: 250,
-    height:'100%',
+    height:'80%',
     backgroundColor: '#fff',
+    alignSelf:'center'
   }
 })

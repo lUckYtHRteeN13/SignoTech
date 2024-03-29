@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, TouchableHighlight, TouchableOpacity } from 're
 export class Suggestions extends Component {
   render() {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.props.onPress}>
         <View style={styles.suggestives}>
           <Text style={styles.text}>{this.props.text}</Text>
         </View>
