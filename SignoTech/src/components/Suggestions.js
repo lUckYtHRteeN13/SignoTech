@@ -1,11 +1,19 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import { BACKGROUND_COLOR, FOREGROUND_COLOR, MIDDLEGROUND_COLOR } from '../constants/Constants';
 
 export class Suggestions extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
         <View style={styles.suggestives}>
+          {
+            this.props?.icon && (
+              <Icon name={this.props.icon} style={[styles.icon]}/>
+            )
+          }
           <Text style={styles.text}>{this.props.text}</Text>
         </View>
       </TouchableOpacity>
@@ -22,6 +30,8 @@ const styles = StyleSheet.create({
   },
   
   suggestives: {
+    flex: 1,
+    flexDirection: 'row',
     paddingBottom: 15,
     paddingTop: 15,
     paddingLeft: 25,
@@ -41,5 +51,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Arial',
     fontSize: 16,
     color: '#fff',
-  }
+    marginLeft: 5,
+  },
+
+  icon: {
+    fontSize: 24,
+    color: '#fff',
+  },
 })

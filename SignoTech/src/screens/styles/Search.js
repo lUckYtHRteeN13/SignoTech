@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    backgroundColor:'#121D44',
-    paddingTop: 15,
-    paddingBottom: 15,
+    backgroundColor:MIDDLEGROUND_COLOR,
+    paddingTop: 5,
+    paddingBottom: 5,
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent:'flex-start',

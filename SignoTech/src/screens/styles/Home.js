@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   
   header: {
-    backgroundColor:'#121D44',
+    backgroundColor:MIDDLEGROUND_COLOR,
     paddingTop: 15,
     paddingBottom: 15,
     paddingLeft: 10,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 48, 
-    color:FOREGROUND_COLOR,
+    color:'#00adef',
   },
   
   searchButton: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: FOREGROUND_COLOR,
+    color: '#00adef',
     fontSize: 12,
     fontFamily:'Arial Bold',
   },

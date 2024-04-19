@@ -1,34 +1,17 @@
 import { View, Text, Image, StatusBar, StyleSheet, TouchableWithoutFeedback, ScrollView, DrawerLayoutAndroid, useWindowDimensions } from 'react-native';
-import React, { useRef } from 'react';
+import React, { useRef, Component } from 'react';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { withNavigation } from '@react-navigation/native';
 
 import Banner from '../../components/Banner';
 import { FOREGROUND_COLOR, BACKGROUND_COLOR, MIDDLEGROUND_COLOR } from "../../constants/Constants";
 import styles from '../styles/Home';
 import IconStyles from '../styles/Icons';
 
-
-function Home({ navigation }) {
-
-  const drawer = useRef<DrawerLayoutAndroid>(null);
-
-  const switchScreen = () => {
-    navigation.navigate('search');
-  };
-
-  const showDrawer = () => {
-    drawer.current?.openDrawer();
-    console.log("Drawer");
-  };
-
-  const navigationView = () => (
-    <View style={styles.container}>
-      <Text style={{color:'#000'}}>I'm in the Drawer!</Text>
-    </View>
-  );
-
-  return (      
+function Home({ navigation }){
+    
+    return (
       <SafeAreaView style={styles.page_container}>
         <StatusBar
           backgroundColor={MIDDLEGROUND_COLOR}
@@ -36,12 +19,12 @@ function Home({ navigation }) {
           hidden={false}
         />
 
-        <View style={styles.header}>
-          <IonIcon name='menu' onPress={showDrawer} style={styles.icon}/>
+        {/* <View style={styles.header}>
+          <IonIcon name='menu' style={styles.icon}/>
           <Text style={[styles.text, styles.header_title]}>
             SignoTech
           </Text>
-        </View>
+        </View> */}
 
         <View style={styles.container}>
           <Image resizeMode='contain' source={require('../../../assets/imgs/logo.png')} style={{height:'100%', width:'100%', overflow:'hidden', flex:1}}/>
@@ -54,13 +37,13 @@ function Home({ navigation }) {
         </View>
 
         <View style={{alignItems:'center',}}>
-          <TouchableWithoutFeedback onPress={switchScreen} activeOpacity={1}>
+          <TouchableWithoutFeedback onPress={() => navigation.push('search')} activeOpacity={1}>
             <View style={styles.searchButton}>
-              <IonIcon name='search' style={styles.icon}/> 
-              <Text style={styles.text}> 
+              <IonIcon name='search' style={[styles.icon, {color: MIDDLEGROUND_COLOR}]}/> 
+              <Text style={[styles.text, {color: MIDDLEGROUND_COLOR}]}> 
                   Type a word or phrase 
               </Text>
-              <IonIcon name='mic' style={styles.icon}/>
+              <IonIcon name='mic' style={[styles.icon, {color: MIDDLEGROUND_COLOR}]}/>
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -79,7 +62,6 @@ function Home({ navigation }) {
           {/* <Text style={{color:'#fff'}}>FOOTER</Text> */}
         </View>
       </SafeAreaView>
-  )
-}
-
+    )
+  }
 export default Home;

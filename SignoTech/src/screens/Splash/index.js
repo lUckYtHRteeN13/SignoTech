@@ -1,9 +1,9 @@
 import { View, Text, ImageBackground, StatusBar } from 'react-native'
 import React from 'react'
 
-export default function SplashScreen({ navigation }) {
+function SplashScreen({ navigation }) {
   setTimeout(() => {
-    navigation.replace('home')
+    navigation.replace('drawer')
     }, 2000)
 
   return (
@@ -14,3 +14,5 @@ export default function SplashScreen({ navigation }) {
     </ImageBackground>
   )
 }
+
+export default SplashScreen;
