@@ -2,15 +2,19 @@ import { View, Text, Image, StatusBar, StyleSheet, TouchableWithoutFeedback, Scr
 import React, { useRef, Component } from 'react';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { withNavigation } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
+import { connect } from 'react-redux';
 
 import Banner from '../../components/Banner';
 import { FOREGROUND_COLOR, BACKGROUND_COLOR, MIDDLEGROUND_COLOR } from "../../constants/Constants";
 import styles from '../styles/Home';
-import IconStyles from '../styles/Icons';
+import * as actions from '../../actions';
 
-function Home({ navigation }){
-    
+function Home({ navigation, ...props }){
+    useFocusEffect(() => {
+      props.changeSearchText("");
+      props.Searching(false);
+    });
     return (
       <SafeAreaView style={styles.page_container}>
         <StatusBar
@@ -18,14 +22,6 @@ function Home({ navigation }){
           barStyle={'light-content'}
           hidden={false}
         />
-
-        {/* <View style={styles.header}>
-          <IonIcon name='menu' style={styles.icon}/>
-          <Text style={[styles.text, styles.header_title]}>
-            SignoTech
-          </Text>
-        </View> */}
-
         <View style={styles.container}>
           <Image resizeMode='contain' source={require('../../../assets/imgs/logo.png')} style={{height:'100%', width:'100%', overflow:'hidden', flex:1}}/>
           <Text style={[styles.text, styles.title]}>
@@ -40,10 +36,9 @@ function Home({ navigation }){
           <TouchableWithoutFeedback onPress={() => navigation.push('search')} activeOpacity={1}>
             <View style={styles.searchButton}>
               <IonIcon name='search' style={[styles.icon, {color: MIDDLEGROUND_COLOR}]}/> 
-              <Text style={[styles.text, {color: MIDDLEGROUND_COLOR}]}> 
+              <Text style={[styles.text, {color: MIDDLEGROUND_COLOR, paddingLeft: 5,}]}> 
                   Type a word or phrase 
               </Text>
-              <IonIcon name='mic' style={[styles.icon, {color: MIDDLEGROUND_COLOR}]}/>
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -51,9 +46,21 @@ function Home({ navigation }){
         <View style={styles.container}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{marginHorizontal:'2%'}}>
             
-            <Banner/>
-            <Banner/>
-            <Banner/>
+            <Banner onPress={() => {navigation.navigate('quiz')}} >
+              <View style={[styles.container, {margin:0}]}>
+                <Image resizeMode='contain' source={require('../../../assets/imgs/quiz_img.png')} style={{flex:1, marginBottom:5}}/>
+                <Text style={[styles.text, {color:"#fff", fontSize:18, textAlign:'center'}]}>SIGN LANGUAGE QUIZ GAME</Text>
+                <Text style={styles.text}>PLAY QUIZ &gt;</Text>
+              </View>
+            </Banner>
+
+            <Banner onPress={() => {navigation.navigate('Alphabets')}}>
+              <View style={[styles.container, {margin:0}]}>
+                <Image resizeMode='contain' source={require('../../../assets/imgs/logo.png')} style={{flex:1, marginBottom:5}}/>
+                <Text style={[styles.text, {color:"#fff", fontSize:18, textAlign:'center'}]}>SIGN LANGUAGE ALPHABETS</Text>
+                <Text style={styles.text}>VIEW &gt;</Text>
+              </View>
+            </Banner>
 
           </ScrollView>
         </View>
@@ -64,4 +71,12 @@ function Home({ navigation }){
       </SafeAreaView>
     )
   }
-export default Home;
+
+const mapStateToProps = (state) => {
+  return {
+    is_searching: state.SearchReducer.is_searching,
+    search_text: state.SearchReducer.search_text
+  }
+}
+
+export default connect(mapStateToProps, actions)(Home);

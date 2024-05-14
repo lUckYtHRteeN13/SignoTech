@@ -1,57 +1,107 @@
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { Component, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 
-import IconStyles from '../styles/Icons';
-import Suggestions from '../../components/Suggestions';
+import RoundedButton from '../../components/RoundedButton';
 import styles from '../styles/Search';
-import { FOREGROUND_COLOR, BACKGROUND_COLOR, MIDDLEGROUND_COLOR } from "../../constants/Constants";
-import Header from '../../components/Header';
+import { images } from "../../constants/Constants";
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
-function Search({ navigation }) {
-  const [history, setHistoryList] = useState(new Set());
+function Search({ navigation, ...props}) {  
+  // useEffect(() => {
+  //   const loadHistory = navigation.addListener('transitionEnd', (e) => {
+  //     props.getSearchHistory();
+  //   });
   
+  //   return loadHistory;
+  // }, [navigation]);
+  const history = [...props.search_history_items].slice(-5);
+
   const suggestions = [
-    "Good Morning", "Good Evening", "Hello",  "How Are You?",
-   "I'm Sorry", "See You Tomorrow", "I Love You", "Bye!"
+    "Good Morning", "Good Evening", "Hello",  "How Are You",
+   "Sorry", "See You Later", "I Love You", "Goodbye"
   ];
   
-  const _onSubmit = (word) => {
-    setHistoryList(new Set([...history, word]));
-    navigation.push('sign', {title: word});
+  const onSubmit = (word) => {
+    if (word !== "") {
+      const res = images[word.toLowerCase()];
+
+      if (res) {
+        props.storeSearchQuery(searchQuery=res.title);
+      }
+
+      props.changeSearchText(res.title);
+      navigation.navigate('sign', {resource:res});
+    }
   };
 
-  const _showHistory = () => {
+  const findImages = () => {
+    return Object.entries(images).filter(
+      ([key, value]) => key.startsWith(props.search_text.toLowerCase()));
+
+  };
+
+  const showHistory = () => {
+
     return (
     <View style={styles.container}>
       <Text style={[styles.text, styles.heading]}>History</Text>
       <View style={styles.suggestions}>
         {
-          Array.from(history).map((word, index) => (<Suggestions onPress={() => _onSubmit(word)} key={index} text={word}/>))
+          history.map((word, index) => (<RoundedButton onPress={() => onSubmit(word)} key={index} text={word} icon="time-outline"/>))
         }
       </View>
     </View>)
+  };
+
+  const showSuggestions = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={[styles.text, styles.heading]}>Common Phrases</Text>
+        <View style={styles.suggestions}>
+        {suggestions.map((word, index) => (<RoundedButton onPress={() => onSubmit(word)} key={index} text={word}/>))}
+        </View>
+      </View>
+      )
+  };
+
+  const showList = () => {
+    return (
+      <View style={styles.container}>
+        <Text style={[styles.text, styles.heading]}>Matches for "{props.search_text}"</Text>
+        <View style={styles.suggestions}>
+        {findImages().map(([key, value]) => (<RoundedButton onPress={() => onSubmit(key)} key={key} text={value.title}/>))}
+        </View>
+      </View>
+      )
   };
 
   return (
     <SafeAreaView style={styles.page_container}>
       <ScrollView contentInsetAdjustmentBehavior='automatic' showsVerticalScrollIndicator={false}>
         {
-          history.size > 0 && (
-            console.log(history.size),
-            _showHistory()
-          )
+          props.is_searching ? (
+            <>
+              {showList()}
+            </>
+          ) : (
+            <>
+              { history.length > 0 && showHistory()}
+              {showSuggestions()}
+            </>
+          ) 
         }
-        <View style={styles.container}>
-          <Text style={[styles.text, styles.heading]}>Common Phrases</Text>
-          <View style={styles.suggestions}>
-            {suggestions.map((word, index) => (<Suggestions onPress={() => _onSubmit(word)} key={index} text={word}/>))}
-          </View>
-        </View>
       </ScrollView>
     </SafeAreaView>
   )
-  
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+	return {
+		search_history_items: state.SearchReducer.search_history_items,
+		is_searching: state.SearchReducer.is_searching,
+		search_text: state.SearchReducer.search_text
+	}
+}
+
+export default connect(mapStateToProps, actions)(Search);

@@ -1,0 +1,277 @@
+{
+  "hello" : {
+    "id":"001",
+    "title":"Hello",
+    "imageURL":"../../assets/imgs/signs/1.Hello.gif"
+  },
+  "how are you":{
+    "id":"002",
+    "title":"How Are You",
+    "imageURL":"../../assets/imgs/signs/2. How are you.gif"
+  },
+  "whats up":{
+    "id":"003",
+    "title":"What's Up",
+    "imageURL":"../../assets/imgs/signs/3. Whats up.gif"
+  },
+  "good":{
+    "id":"004",
+    "title":"Good",
+    "imageURL":"../../assets/imgs/signs/4. Good.gif"
+  },
+  "fine":{
+    "id":"005",
+    "title":"Fine",
+    "imageURL":"../../assets/imgs/signs/5. Fine.gif"
+  },
+  "bad":{
+    "id":"006",
+    "title":"Bad",
+    "imageURL":"../../assets/imgs/signs/6.Bad.gif"
+  },
+  "great":{
+    "id":"007",
+    "title":"Great",
+    "imageURL":"../../assets/imgs/signs/7. Great.gif"
+  },
+  "nothing":{
+    "id":"008",
+    "title":"Nothing",
+    "imageURL":"../../assets/imgs/signs/8. Nothing.gif"
+  },
+  "busy":{
+    "id":"009",
+    "title":"Busy",
+    "imageURL":"../../assets/imgs/signs/9. Busy.gif"
+  },
+  "so so":{
+    "id":"010",
+    "title":"So So",
+    "imageURL":"../../assets/imgs/signs/10. So so.gif"
+  },
+  "name":{
+    "id":"011",
+    "title":"Name",
+    "imageURL":"../../assets/imgs/signs/11. Name.gif"
+  },
+  "what":{
+    "id":"0012",
+    "title":"What",
+    "imageURL":"../../assets/imgs/signs/12. What.gif"
+  },
+  "work":{
+    "id":"013",
+    "title":"Work",
+    "imageURL":"../../assets/imgs/signs/13. Work.gif"
+  },
+  "where":{
+    "id":"014",
+    "title":"Where",
+    "imageURL":"../../assets/imgs/signs/14. Where.gif"
+  },
+  "deaf":{
+    "id":"015",
+    "title":"Deaf",
+    "imageURL":"../../assets/imgs/signs/15. Deaf.gif"
+  },
+  "hearing":{
+    "id":"016",
+    "title":"Hearing",
+    "imageURL":"../../assets/imgs/signs/16. Hearing.gif"
+  },
+  "hard of hearing":{
+    "id":"017",
+    "title":"Hard Of Hearing",
+    "imageURL":"../../assets/imgs/signs/17. Hard of hearing.gif"
+  },
+  "age":{
+    "id":"018",
+    "title":"Age",
+    "imageURL":"../../assets/imgs/signs/18. Age.gif"
+  },
+  "yes":{
+    "id":"019",
+    "title":"Yes",
+    "imageURL":"../../assets/imgs/signs/19. Yes.gif"
+  },
+  "no":{
+    "id":"020",
+    "title":"No",
+    "imageURL":"../../assets/imgs/signs/20. No.gif"
+  },
+  "understand":{
+    "id":"021",
+    "title":"Understand",
+    "imageURL":"../../assets/imgs/signs/21. Understand.gif"
+  },
+  "dont understand":{
+    "id":"022",
+    "title":"Don't Understand",
+    "imageURL":"../../assets/imgs/signs/22. Dont understand.gif"
+  },
+  "learn":{
+    "id":"023",
+    "title":"Learn",
+    "imageURL":"../../assets/imgs/signs/23. Learn.gif"
+  },
+  "asl":{
+    "id":"024",
+    "title":"ASL",
+    "imageURL":"../../assets/imgs/signs/24. ASL.gif"
+  },
+  "sign":{
+    "id":"025",
+    "title":"Sign",
+    "imageURL":"../../assets/imgs/signs/25. Sign.gif"
+  },
+  "please":{
+    "id":"026",
+    "title":"Please",
+    "imageURL":"../../assets/imgs/signs/26. Please.gif"
+  },
+  "sorry":{
+    "id":"027",
+    "title":"Sorry",
+    "imageURL":"../../assets/imgs/signs/27. Sorry.gif"
+  },
+  "slow":{
+    "id":"028",
+    "title":"Slow",
+    "imageURL":"../../assets/imgs/signs/28. Slow.gif"
+  },
+  "again":{
+    "id":"029",
+    "title":"Again",
+    "imageURL":"../../assets/imgs/signs/29. Again.gif"
+  },
+  "ready":{
+    "id":"030",
+    "title":"Ready",
+    "imageURL":"../../assets/imgs/signs/30. Ready.gif"
+  },
+  "school":{
+    "id":"031",
+    "title":"School",
+    "imageURL":"../../assets/imgs/signs/31. School.gif"
+  },
+  "teacher":{
+    "id":"032",
+    "title":"Teacher",
+    "imageURL":"../../assets/imgs/signs/32. Teacher.gif"
+  },
+  "oh i see":{
+    "id":"033",
+    "title":"Oh, I See",
+    "imageURL":"../../assets/imgs/signs/33. Oh, i see.gif"
+  },
+  "friend":{
+    "id":"034",
+    "title":"Friend",
+    "imageURL":"../../assets/imgs/signs/34. Friend.gif"
+  },
+  "favourite":{
+    "id":"035",
+    "title":"Favourite",
+    "imageURL":"../../assets/imgs/signs/35. Favourite.gif"
+  },
+  "restaurant":{
+    "id":"036",
+    "title":"Restaurant",
+    "imageURL":"../../assets/imgs/signs/36. Restaurant.gif"
+  },
+  "like":{
+    "id":"037",
+    "title":"Like",
+    "imageURL":"../../assets/imgs/signs/37. Like.gif"
+  },
+  "dont like":{
+    "id":"038",
+    "title":"Don't Like",
+    "imageURL":"../../assets/imgs/signs/38. Don't Like.gif"
+  },
+  "have":{
+    "id":"039",
+    "title":"Have",
+    "imageURL":"../../assets/imgs/signs/39. Have.gif"
+  },
+  "want":{
+    "id":"040",
+    "title":"Want",
+    "imageURL":"../../assets/imgs/signs/40. Want.gif"
+  },
+  "not yet":{
+    "id":"041",
+    "title":"Not Yet",
+    "imageURL":"../../assets/imgs/signs/41. Not yet.gif"
+  },
+  "chat":{
+    "id":"042",
+    "title":"Chat",
+    "imageURL":"../../assets/imgs/signs/42. Chat.gif"
+  },
+  "bathroom":{
+    "id":"043",
+    "title":"Bathroom",
+    "imageURL":"../../assets/imgs/signs/43. Bathroom.gif"
+  },
+  "go":{
+    "id":"044",
+    "title":"Go",
+    "imageURL":"../../assets/imgs/signs/44. Go.gif"
+  },
+  "come":{
+    "id":"045",
+    "title":"Come",
+    "imageURL":"../../assets/imgs/signs/45. Come.gif"
+  },
+  "thank you":{
+    "id":"046",
+    "title":"Thank You",
+    "imageURL":"../../assets/imgs/signs/46. Thank you.gif"
+  },
+  "see you later":{
+    "id":"047",
+    "title":"See You Later",
+    "imageURL":"../../assets/imgs/signs/47. See you later.gif"
+  },
+  "nice to meet you":{
+    "id":"048",
+    "title":"Nice To Meet You",
+    "imageURL":"../../assets/imgs/signs/48. Nice to meet you.gif"
+  },
+  "take care":{
+    "id":"049",
+    "title":"Take Care",
+    "imageURL":"../../assets/imgs/signs/49. Take care.gif"
+  },
+  "goodbye":{
+    "id":"050",
+    "title":"Goodbye",
+    "imageURL":"../../assets/imgs/signs/50. Goodbye.gif"
+  },
+  "good morning":{
+    "id":"051",
+    "title":"Good Morning",
+    "imageURL":"../../assets/imgs/signs/51. Good morning.gif"
+  },
+  "good evening":{
+    "id":"052",
+    "title":"Good Evening",
+    "imageURL":"../../assets/imgs/signs/52. Good evening.gif"
+  },
+  "i love you":{
+    "id":"053",
+    "title":"I Love You",
+    "imageURL":"../../assets/imgs/signs/53. I love you.gif"
+  },
+  "good afternoon":{
+    "id":"054",
+    "title":"Good Afternoon",
+    "imageURL":"../../assets/imgs/signs/54. Good afternoon.gif"
+  },
+  "excuse me":{
+    "id":"055",
+    "title":"Excuse Me",
+    "imageURL":"../../assets/imgs/signs/55. Excuse me.gif"
+  }
+}

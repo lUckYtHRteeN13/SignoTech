@@ -1,28 +1,35 @@
 import { SafeAreaView, StyleSheet, Text, View, TextInput, ScrollView, Image } from 'react-native';
 import React, { useRef, useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Video from 'react-native-video';
 
-import { FOREGROUND_COLOR, BACKGROUND_COLOR, MIDDLEGROUND_COLOR, TEXT_COLOR } from "../../constants/Constants";
+import { images, FOREGROUND_COLOR, BACKGROUND_COLOR, MIDDLEGROUND_COLOR, TEXT_COLOR } from "../../constants/Constants";
 
-function Sign({ navigation, route }) {
-  const sintel = require("../../../assets/videos/sign1.mp4");
+function Sign({ navigation, route}) {
+  const { resource } = route.params;
+
+  if (!resource) {
+    return (
+      <SafeAreaView style={{flex:1, backgroundColor:BACKGROUND_COLOR, alignItems:'center', justifyContent:'center'}}>
+        <Text style={styles.text}>Cannot Find Phrase</Text>
+      </SafeAreaView>
+    )
+  }
 
   return (
     <SafeAreaView style={{flex:1, backgroundColor:BACKGROUND_COLOR}}>
-      <View style={{marginBottom:15, paddingTop: 10, paddingBottom:10, alignItems:'center', backgroundColor:FOREGROUND_COLOR}}>
-        <Text style={{color:TEXT_COLOR, fontSize:32, fontFamily:'Arial Bold'}}>{route.params.title}</Text>
+      <View style={{marginBottom:20, paddingTop: 10, paddingBottom:10, alignItems:'center', backgroundColor:FOREGROUND_COLOR}}>
+        <Text style={styles.text}>{resource.title}</Text>
         <Icon name="heart-outline" style={{fontSize:32, color:TEXT_COLOR}}/>
       </View>
 
       <View style={{paddingHorizontal:30, flex:1, justifyContent:'flex-start'}}>
-        <Video
-          source={{uri:sintel}}
-          muted={true}
-          repeat={true}
-          resizeMode='strecth'
-          style={styles.backgroundVideo}
-        />
+        <View style={styles.imageContainer}>
+          <Image
+            resizeMode='cover'
+            style={styles.img}
+            source={resource.imageURL}
+          />
+        </View>
       </View>
     </SafeAreaView>
   )
@@ -31,9 +38,17 @@ function Sign({ navigation, route }) {
 export default Sign;
 
 const styles = StyleSheet.create({
-  backgroundVideo: {
-    height:'36%',
+  imageContainer: {
+    height:'50%',
+    borderRadius:100, 
+  },
+  
+  img: {
     width:'100%',
+    borderColor: FOREGROUND_COLOR,
+    borderWidth: 10,
+    borderRadius: 40,
+    overlayColor: BACKGROUND_COLOR,
   },
 
   header: {
@@ -73,9 +88,9 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: FOREGROUND_COLOR,
-    fontSize: 12,
-    fontFamily:'Arial',
+    color:TEXT_COLOR,
+    fontSize:32,
+    fontFamily:'Arial Bold'
   },
 
   input: {

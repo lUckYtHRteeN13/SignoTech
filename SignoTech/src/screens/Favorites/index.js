@@ -1,0 +1,13 @@
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import ComingSoon from '../../components/ComingSoon'
+
+function Favourites({navigation}) {
+  return (
+    <ComingSoon/>
+  )
+}
+
+export default Favourites
+
+const styles = StyleSheet.create({})
